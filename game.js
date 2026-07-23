@@ -40,8 +40,7 @@ const ASSETS_TO_LOAD = [
     'images/combo8_3.png',
     'images/combo8_4.png',
     'images/combo8_5.png',
-    'images/2.png',
-    'images/lingnan-pattern.png',
+    
 ];
 
 let loadedCount = 0;

@@ -66,17 +66,8 @@ body {
     z-index: 100;
     animation: slowBgGlow 8s ease-in-out infinite;
 }
-/* 岭南回纹暗纹 */
-#startScreen::before {
-    content: "";
-    position: absolute;
-    inset:0;
-    background: url("images/lingnan-pattern.png") repeat;
-    background-size: 400px;
-    opacity: 0.10;
-    pointer-events: none;
-    z-index: -1;
-}
+
+
 
 .start-container {
     display: flex;
@@ -558,12 +549,8 @@ body {
     align-items: center;
     justify-content: center;
 
-    /* 新增：暗金径向渐变 + 淡祥云暗纹背景 */
-    background: radial-gradient(ellipse at center, #190a02 0%, #070300 100%);
-    background-image: url("images/2.png");
-    background-repeat: repeat;
-    background-size: 400px 400px;
-    background-blend-mode: overlay;
+    /* 🔥 纯 CSS 渐变背景（无需加载图片） */
+    background: radial-gradient(ellipse at center, #2d1508 0%, #0d0500 60%, #050200 100%);
     opacity: 0;
     transition: opacity 0.5s ease;
 }
