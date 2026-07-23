@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>鼎承·狮跃</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- ===== 加载页面 ===== -->
+<div id="loadingScreen">
+    <div class="loading-container">
+        <div class="loading-icon">◆</div>
+        <h1 class="loading-title">鼎承·狮跃</h1>
+        <p class="loading-subtitle">鼎力传承 · 狮跃高桩</p>
+        
+        <div class="loading-bar-wrap">
+            <div class="loading-bar" id="loadingBar"></div>
+        </div>
+        
+        <p class="loading-text" id="loadingText">加载中... 0%</p>
+        <p class="loading-tip">传承醒狮文化 · 北科大鼎承狮跃实践团</p>
+    </div>
+</div>
+
+    <div id="startScreen">
+    <div class="start-container">
+        <!-- 顶部装饰 -->
+        <div class="start-deco-top">
+            <span class="deco-diamond">◆</span>
+            <span class="deco-diamond">◇</span>
+            <span class="deco-diamond">◆</span>
+            <span class="deco-diamond">◇</span>
+            <span class="deco-diamond">◆</span>
+        </div>
+
+        <!-- 主内容 -->
+        <div class="start-content">
+            <!-- 主标题 -->
+            <h1 class="start-title">鼎承 · 狮跃</h1>
+            
+            <!-- 副标题 -->
+            <p class="start-subtitle">鼎力传承 · 狮跃高桩</p>
+
+            <!-- 分隔装饰 -->
+            <div class="start-divider">
+                <span class="divider-line"></span>
+                <span class="divider-icon">◆</span>
+                <span class="divider-line"></span>
+            </div>
+
+            <!-- 操作说明 -->
+            <div class="start-tips">
+                <span class="tip-item">滑动方向</span>
+                <span class="tip-divider">｜</span>
+                <span class="tip-item">点击中心</span>
+                <span class="tip-divider">｜</span>
+                <span class="tip-item">画V</span>
+                <span class="tip-divider">｜</span>
+                <span class="tip-item">双指触摸</span>
+                <span class="tip-divider">｜</span>
+                <span class="tip-item">按住蓄力</span>
+            </div>
+
+            <!-- 按钮 -->
+            <div class="start-btns">
+                <button class="btn-primary" id="tutorialBtn">开始教学</button>
+                <button class="btn-secondary" id="endlessBtn">连招挑战</button>
+            </div>
+
+            <!-- 署名 -->
+            <div class="start-footer">
+                <span class="footer-line"></span>
+                <span class="footer-text">北科大鼎承狮跃实践团</span>
+                <span class="footer-line"></span>
+            </div>
+        </div>
+
+        <!-- 底部装饰 -->
+        <div class="start-deco-bottom">
+            <span class="deco-diamond">◇</span>
+            <span class="deco-diamond">◆</span>
+            <span class="deco-diamond">◇</span>
+            <span class="deco-diamond">◆</span>
+            <span class="deco-diamond">◇</span>
+        </div>
+    </div>
+</div>
+
+    <div id="gameScreen" style="display:none;">
+
+        <div id="header">
+            <div class="header-left">
+                <span id="scoreDisplay">分数 0</span>
+                <span id="comboDisplay">连击 0</span>
+            </div>
+            <span id="phaseDisplay">教学模式</span>
+            <div class="header-right">
+                <span id="timerDisplay">00:00</span>
+            </div>
+        </div>
+
+        <div id="progressBar">
+            <div id="progressFill"></div>
+        </div>
+
+        <div id="gameContainer">
+
+            <!-- 醒狮 -->
+            <div id="lionWrapper" class="lion-idle">
+                <img src="images/lion_idle.png" alt="醒狮" class="lion-img" id="lionImg" />
+            </div>
+
+            <div id="judgeText"></div>
+            <div id="reactionDisplay"></div>
+            <div id="difficultyToast"></div>
+
+            <div id="ringArea">
+                <div id="ringBg"></div>
+
+                <div id="chargeRing"></div>
+
+                <div id="chargeBarContainer">
+                    <div id="chargeBarFill"></div>
+                    <div class="perfect-zone">
+                        <span class="zone-label">★ PERFECT 区间 ★</span>
+                        <span class="zone-line-left"></span>
+                        <span class="zone-line-right"></span>
+                    </div>
+                </div>
+                <div id="chargeLabel">按住蓄力</div>
+
+                <div class="dir-hint up" id="dirUp">
+                    <div class="swipe-trail"></div>
+                    <div class="swipe-arrow"></div>
+                </div>
+                <div class="dir-hint down" id="dirDown">
+                    <div class="swipe-trail"></div>
+                    <div class="swipe-arrow"></div>
+                </div>
+                <div class="dir-hint left" id="dirLeft">
+                    <div class="swipe-trail"></div>
+                    <div class="swipe-arrow"></div>
+                </div>
+                <div class="dir-hint right" id="dirRight">
+                    <div class="swipe-trail"></div>
+                    <div class="swipe-arrow"></div>
+                </div>
+
+                <div id="notesContainer"></div>
+
+                <div id="chargeRipple">
+                    <div class="ripple-ring"></div>
+                    <div class="ripple-ring"></div>
+                    <div class="ripple-ring"></div>
+                </div>
+
+                <div id="tapPulse">
+                    <div class="target-ring"></div>
+                    <div class="target-ring"></div>
+                    <div class="target-ring"></div>
+                    <div class="target-dot"></div>
+                    <div class="press-feedback" id="pressFeedback"></div>
+                </div>
+
+                <div id="spinOrbit">
+                    <div class="orbit-ring"></div>
+                    <div class="orbit-dot"></div>
+                    <div class="orbit-center-dot"></div>
+                    <div class="orbit-tick"></div>
+                    <div class="orbit-tick"></div>
+                    <div class="orbit-tick"></div>
+                    <div class="orbit-tick"></div>
+                    <div class="orbit-tick"></div>
+                    <div class="orbit-tick"></div>
+                    <div class="orbit-tick"></div>
+                    <div class="orbit-tick"></div>
+                </div>
+
+                <div id="doubleRings">
+                    <div class="double-ring left"></div>
+                    <div class="double-ring right"></div>
+                </div>
+
+            </div>
+
+            <div id="tutorialCard">
+                  <div class="tuto-judge-top"></div>
+
+                <div class="tuto-card-progress" id="tutoProgress">1 / 8</div>
+                <div class="tuto-card-name" id="tutoName">左跃起势</div>
+                <div class="tuto-card-gesture" id="tutoGesture">向上滑动</div>
+                <div class="tuto-card-step" id="tutoStep">在圆环内向上滑动</div>
+                <div class="tuto-card-status waiting" id="tutoStatus">等待操作...</div>
+                <div class="tuto-card-retry" id="tutoRetry">轻触重试</div>
+            </div>
+
+            <!-- 连招完成弹窗 -->
+            <div id="comicOverlay">
+                <div class="comic-scroll-container">
+                    <div class="comic-header">
+                        <div class="comic-header-row">
+                            <h2 class="comic-title" id="comicTitle">起势入门 完成！</h2>
+                            <div class="comic-score-badge">
+                                <span class="score-label">得分</span>
+                                <span class="score-value" id="comicScoreValue">85</span>
+                                <span class="score-max">/ 100</span>
+                            </div>
+                        </div>
+                        <p class="comic-culture" id="comicCulture">「起势」是醒狮表演的开场动作...</p>
+                    </div>
+                    
+                    <div class="comic-slider-wrapper">
+                        <button class="slider-btn slider-prev" id="sliderPrev">‹</button>
+                        <div class="comic-slider-track" id="comicSliderTrack">
+                            <div class="slider-items" id="sliderItems"></div>
+                        </div>
+                        <button class="slider-btn slider-next" id="sliderNext">›</button>
+                    </div>
+                    
+                    <div class="slider-dots" id="sliderDots"></div>
+                    
+                    <div class="comic-action-info">
+                        <div class="action-gesture" id="actionGesture">⬆ 向上滑动</div>
+                        <div class="action-name" id="actionName">左跃起势</div>
+                        <div class="action-desc" id="actionDesc">勇往直前，气势如虹</div>
+                    </div>
+                    
+                    <div class="comic-footer">
+                        <button class="comic-next-btn" id="comicNextBtn">继续挑战 →</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="cultureBar">
+                <span id="cultureText">佛山醒狮起源于明代，已有500多年历史</span>
+            </div>
+        </div>
+
+<!-- ===== 游戏结束弹窗 - 醒狮加冕版 ===== -->
+<div id="resultOverlay">
+    <div class="result-box">
+        <!-- 顶部装饰+皇冠：一张图片 -->
+        <img src="images/result_header_deco.png" alt="装饰" class="result-header-deco" />
+        
+        <!-- 称号区域 -->
+        <div class="result-title-area">
+            <div class="result-icon" id="resultIcon">★</div>
+            <h2 class="result-title" id="resultTitle">无双狮王</h2>
+            <p class="result-subtitle" id="resultSubtitle">登峰造极，傲视群雄</p>
+        </div>
+        
+       
+        <!-- 数据卡片（3项） -->
+<div class="result-stats">
+    <div class="stat-card">
+        <div class="stat-icon">◆</div>
+        <div class="stat-value" id="finalScore">0</div>
+        <div class="stat-label">得 分</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">◆</div>
+        <div class="stat-value" id="finalAccuracy">0%</div>
+        <div class="stat-label">命中率</div>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon">◆</div>
+        <div class="stat-value" id="finalReaction">0ms</div>
+        <div class="stat-label">反应时间</div>
+    </div>
+</div>
+        
+        <!-- 🔥 新增：醒狮谱（动作清单） -->
+        <div class="result-scroll">
+            <div class="scroll-title">
+                <span class="scroll-line-left"></span>
+                醒 狮 谱
+                <span class="scroll-line-right"></span>
+            </div>
+            <div class="scroll-content" id="resultActions"></div>
+            <div class="scroll-seal">
+                <span class="seal-text">鼎承·狮跃</span>
+            </div>
+        </div>
+        
+        <!-- 按钮 -->
+        <div class="result-btns">
+            <button id="retryBtn">再 来 一 次</button>
+            <button class="tuto-btn" id="homeBtn">回 到 首 页</button>
+        </div>
+    </div>
+</div>
+        
+        
+        
+       
+    </div>
+</div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
