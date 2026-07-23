@@ -2450,6 +2450,7 @@ body {
     text-align: center;
     max-width: 300px;
     padding: 20px;
+    margin-top: -40px;        /* 🔥 向上移动 */
     animation: loadFadeIn 0.7s ease-out forwards;
 }
 
