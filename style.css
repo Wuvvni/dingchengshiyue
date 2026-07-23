@@ -2575,4 +2575,102 @@ body {
     0% { opacity: 0; transform: scale(0.3); }
     100% { opacity: 0.9; transform: scale(1); }
 }
+/* ============================================================
+   加载页面 - 互动文化知识
+   ============================================================ */
+
+.loading-icon {
+    color: #D4A017;
+    font-size: 36px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease, text-shadow 0.3s ease;
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+.loading-icon:hover {
+    transform: scale(1.15);
+    text-shadow: 0 0 20px rgba(212, 160, 23, 0.4);
+}
+
+.loading-icon:active {
+    transform: scale(0.85);
+}
+
+.loading-culture {
+    margin: 14px 0 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 44px;
+}
+
+.culture-arrow {
+    color: rgba(212, 160, 23, 0.2);
+    font-size: 18px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+    padding: 0 4px;
+    line-height: 1;
+}
+
+.culture-arrow:hover {
+    color: rgba(212, 160, 23, 0.6);
+    transform: scale(1.2);
+}
+
+.culture-arrow:active {
+    transform: scale(0.8);
+}
+
+.culture-text {
+    color: rgba(212, 160, 23, 0.5);
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    max-width: 260px;
+    line-height: 1.5;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    min-height: 20px;
+    font-weight: 400;
+}
+
+.culture-text.fade-out {
+    opacity: 0;
+    transform: translateY(-4px);
+}
+
+.culture-text.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 手机端适配 */
+@media (max-width: 420px) {
+    .loading-icon {
+        font-size: 28px;
+    }
+    .culture-text {
+        font-size: 11px;
+        max-width: 200px;
+    }
+    .culture-arrow {
+        font-size: 15px;
+    }
+}
+
+@media (max-height: 640px) {
+    .loading-culture {
+        margin: 8px 0 4px 0;
+        min-height: 32px;
+    }
+    .culture-text {
+        font-size: 11px;
+    }
+}
 

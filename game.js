@@ -46,8 +46,110 @@ const ASSETS_TO_LOAD = [
 
 let loadedCount = 0;
 let totalAssets = ASSETS_TO_LOAD.length;
+// ============================================================
+//  加载页面互动文化知识
+// ============================================================
 
+const CULTURE_KNOWLEDGE = [
+    '🦁 佛山醒狮起源于明代，已有500多年历史',
+    '💰 "采青"寓意"生财"，是春节最受欢迎的表演',
+    '🎨 醒狮分为刘备狮(黄)、关羽狮(红)、张飞狮(黑)',
+    '🥁 醒狮鼓点有"三星""七星"等不同节奏型',
+    '🏆 佛山"狮王争霸"是醒狮界的最高荣誉赛事',
+    '🏔️ 高桩表演桩高最高可达3米，难度极高',
+    '🦩 "金鸡独立"是高桩醒狮最高难度动作之一',
+    '📜 佛山醒狮2006年入选国家级非物质文化遗产',
+    '🥬 醒狮"采青"中的"青"原指生菜，寓意生机',
+    '🥋 醒狮动作融合了南派武术的步法',
+];
+
+let currentTipIndex = 0;
+let isTipTransitioning = false;
+
+function showCultureTip(index) {
+    const tipEl = document.getElementById('cultureTip');
+    if (!tipEl) return;
+    
+    index = (index + CULTURE_KNOWLEDGE.length) % CULTURE_KNOWLEDGE.length;
+    currentTipIndex = index;
+    
+    tipEl.className = 'culture-text fade-out';
+    
+    setTimeout(function() {
+        tipEl.textContent = CULTURE_KNOWLEDGE[index];
+        tipEl.className = 'culture-text fade-in';
+    }, 350);
+}
+
+function initLoadingInteraction() {
+    const icon = document.getElementById('loadingIcon');
+    const prevBtn = document.getElementById('culturePrev');
+    const nextBtn = document.getElementById('cultureNext');
+    const tipEl = document.getElementById('cultureTip');
+    
+    if (!icon || !tipEl) return;
+    
+    currentTipIndex = 0;
+    tipEl.textContent = CULTURE_KNOWLEDGE[0];
+    tipEl.className = 'culture-text fade-in';
+    
+    icon.addEventListener('click', function() {
+        if (isTipTransitioning) return;
+        isTipTransitioning = true;
+        showCultureTip(currentTipIndex + 1);
+        setTimeout(function() {
+            isTipTransitioning = false;
+        }, 400);
+    });
+    
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (isTipTransitioning) return;
+            isTipTransitioning = true;
+            showCultureTip(currentTipIndex - 1);
+            setTimeout(function() {
+                isTipTransitioning = false;
+            }, 400);
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (isTipTransitioning) return;
+            isTipTransitioning = true;
+            showCultureTip(currentTipIndex + 1);
+            setTimeout(function() {
+                isTipTransitioning = false;
+            }, 400);
+        });
+    }
+    
+    document.addEventListener('keydown', function(e) {
+        if (!document.getElementById('loadingScreen') || 
+            document.getElementById('loadingScreen').classList.contains('hidden')) {
+            return;
+        }
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            if (!isTipTransitioning) {
+                isTipTransitioning = true;
+                showCultureTip(currentTipIndex - 1);
+                setTimeout(function() { isTipTransitioning = false; }, 400);
+            }
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            if (!isTipTransitioning) {
+                isTipTransitioning = true;
+                showCultureTip(currentTipIndex + 1);
+                setTimeout(function() { isTipTransitioning = false; }, 400);
+            }
+        }
+    });
+}
 function loadAllAssets() {
+     initLoadingInteraction();
     const loadingBar = document.getElementById('loadingBar');
     const loadingText = document.getElementById('loadingText');
     const loadingScreen = document.getElementById('loadingScreen');

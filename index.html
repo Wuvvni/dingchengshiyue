@@ -10,7 +10,8 @@
     <!-- ===== 加载页面 ===== -->
 <div id="loadingScreen">
     <div class="loading-container">
-        <div class="loading-icon">◆</div>
+        <!-- 🔥 添加 id="loadingIcon" -->
+        <div class="loading-icon" id="loadingIcon">◆</div>
         <h1 class="loading-title">鼎承·狮跃</h1>
         <p class="loading-subtitle">鼎力传承 · 狮跃高桩</p>
         
@@ -19,6 +20,14 @@
         </div>
         
         <p class="loading-text" id="loadingText">加载中... 0%</p>
+        
+        <!-- 🔥 新增：互动知识区域 -->
+        <div class="loading-culture" id="loadingCulture">
+            <span class="culture-arrow" id="culturePrev">‹</span>
+            <span class="culture-text" id="cultureTip">👆 点击菱形切换知识</span>
+            <span class="culture-arrow" id="cultureNext">›</span>
+        </div>
+        
         <p class="loading-tip">传承醒狮文化 · 北科大鼎承狮跃实践团</p>
     </div>
 </div>
